@@ -1,0 +1,39 @@
+! + enter : 초기 상태
+<!----> : 주석
+tab: 들여쓰기 / shift + tab: 뒤로 들여쓰기
+shif + alt + 방향키 : 해당방향으로 줄 복사
+ctrl + alt + 방향키 : 해당 커서 확장
+h1 ~ 6 : Heading Tag
+hr : 수평선
+br : 엔터
+p : 여백 엔터(문단 나누기)
+pre : 쓰여진대로 줄력
+b : Bold체 / i : italin체 / s : 취소선 / u : 밑줄 / mark : 형광펜 / small : 작게
+strong : 강조(볼드) / em : 강조(기울임)
+sub : 아래 첨자 / sup : 윗 첨자
+
+==목록 태그==
+ul : 순서 없는 목록 / ol : 순서 있는 목록 / li : 목록 요소 
+*ol 속성: type = a / A / i / I / 1 / start / reversed
+
+==속성 태그==
+table : 표 영역
+tr : 행 / th : 컬럼명(열) / td : 컬럼(열)
+thead : 테이블 상단 부분 / tbody : 테이블 중단 부분 / tfoot : 테이블 하단 부분
+*표 관련 속성
+-rowspan : 행병합 / colspan : 열병합
+-bolder : 테두리 / width : 폭 / height : 높이
+-bolder-collapse : 테두리 한 줄 / bolder-separate : 각자 테두리(기본값)
+
+==이미지 태그==
+img : 이미지
+a
+*속성 src : 이미지 경로 지정 / alt : 이미지 설명
+
+==하이퍼링크 태그==
+
+input : 입력할 수 있는 양식 제공
+*속성 : type = "text/password/url/email/number/range/
+	        date/month/week/time/datetime-local/radio/checkbox/file/color/hidden"
+form
+*속성 : action / name / method(get/post) / target

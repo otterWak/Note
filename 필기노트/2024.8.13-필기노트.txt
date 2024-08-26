@@ -1,0 +1,44 @@
+20240813
+
+https://flukeout.github.io/
+
+====================
+
+※flexbox※
+1. Flexbox의 구성
+- flex-container : 정렬이 필요한 요소를 감싸는 요소 (부모)
+- item: 정렬을 적용할 요소 (자식)
+(flex-container와 item에 사용되는 flex 관련 css 속성이 나누어져 있음.)
+
+2. Flexbox의 축
+- 중심축(메인축)
+- 교차축, 반대축
+   →메인축과 교차축은 설정에 따라 바꿀 수 있음
+
+*부모전용 속성
+display: flex; == flex속성 부여
+flex-direction == 메인축 방향 설정
+flex-wrap == item 배치 열수 설정(한줄 강제 / 여러줄)
+justify-content == 메인축 item 정렬
+align-items == 교차축 item 정렬
+
+*자식전용 속성
+flex-basis == item의 메인 축 방향으로의 점유율 지정(내용물 비율)
+flex-grow == item이 가용 공간을 얼마나 차지할지 정의(content안 여백의 비율)
+flex-shrink ==다른 항목들과 함께 줄어드는 비율(클수록 많이 줄어듬)
+flex == grow, shrink, basis를 한 번에 쓸 수 있는 속성
+order == item 나열 순서
+
+
+※text-stle※
+
+color == 글자 색상 지정
+-> 색상명 / 16진수 / rgb / rgba / hsl / hsla
+text-direction == 택스트 줄
+-> underline / line-through / overline / none
+text-align == 글자 정렬
+-> right / left / center / justify
+line-height == 장평
+letter-spacing == 자간
+text-shadow == 그림자
+ex) text-shadow: 0px 0px 4px color

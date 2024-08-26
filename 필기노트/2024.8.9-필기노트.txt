@@ -1,0 +1,25 @@
+20240809
+
+
+
+====================
+※입력 관련 태그※
+2. form: 서버 할 때 자세히 할 예정(중요)
+속성
+action, name, method(get/post), target
+
+3. 기타 태그
+fieldset, legend / textrea / select, option 
+
+
+====================
+※CSS선택자※
+1. 태그 선택자 : 태그명{CSS코드;}
+2.id 선택자 : #id속성값{CSS코드;}
+3.class 선택자 : .class속성값{CSS코드;}
+4. 모든요소 선택자: *{CSS코드;}
+5. 자식 선택자-> 선택자1 > 선택자2{CSS코드;}
+6. 후손 선택자-> 선택자1 선택자2{CSS코드;}
+7. 동위 선택자-> 선택자1 + 선택자2{CSS코드;} / 선택자1~선택자3{CSS코드;}
+8. 반응 선택자-> :active(클릭중) / :hover(마우스오버)
+9. 상태 선택자-> :focus / :checked / :enabled / :disabled

@@ -1,0 +1,40 @@
+20240820
+
+====================
+※JavaScript※
+
+==제어문==
+: 프로그램을 읽는 흐름을 제어하는 구문
+
+1. 제어문의 종류
+1) 조건문
+2) 반복문
+3) 분기문
+
+*code: 사용자 조건 태그, 원하는 태그를 만들 수 있음.
+
+2. 조건문
+1) if 문
+2) if - else if 문
+3) if - else if - else 문
+
+Math.random() == 0 이상, 1미만 소수점 난수 발생
+Math.floor() == 소수점을 내림하여 정수로 만듦
+.lenth == 문자 길이
+
+3.스위치 문
+switch, case, default, break(분기문 중 하나)
+
+switch(op){
+  case '+' : result = v1 + v2; break;
+  case '-' : result = v1 - v2; break;
+  case '*' : result = v1 * v2; break;
+  case '/' : result = v1 / v2; break;
+  case '%' : result = v1 % v2; break;
+
+ default : result = "잘못된 연산자"; break;
+}
+
+===============================
+프로그래머스
+: 코드 연습 사이트

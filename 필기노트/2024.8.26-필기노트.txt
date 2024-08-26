@@ -1,0 +1,79 @@
+20240826
+
+====================
+※Github 이용※
+
+https://github.com/
+코드를 오려두는 원격 저장소
+Git: 코드 추적 통합 관리 프로그램
+- 버전 관리 시스템
+github
+Git을 이용한 원격 저장소. 많은 기업과 개발자들이 사용 중.
+
+CLI(Command Line Interpace): 명령어 입력해서 사용하는 방법
+GUI
+
+CLI: 빠르고, 가볍고, 용량이 적어서 많이 사용
+
+명령어
+ls + enter: list. 현재 디렉토리(폴더)의 파일 목록 확인
+cd + enter: change directory. 현재 작업중인 디렉토리 변경
+ex) cd 3_(+ tab: 어느정도 맞는거 찾아 줌// 디렉토리 명)
+ex) cd ..: 부모 디렉토리로 이동
+
+== Git 연결 ==
+git init: 새로운 Git 저장소를 초기화할 때 사용
+- 현재 디렉토리를 Git 저장소로 설정
+- 이후에는 해당 디렉토리에서 Git의 버전관리기능을 이용할 수 있음
+-프로젝트를(나의 폴더) Git으로 관리하려고 할 때 가장 먼저 사용하는 명령어
+
+
+== 여기 까지는 로컬(내 pc)에서 일어나는 변경사항만 추적/관리 ==
+git status 현재 스테이징 영역에 있는 파일와 아닌 파일들의 상태를 확인
+빨간 글씨: 무대 밑(unstage)에 존재(저장 불가)
+초록 글씨: 무대(stage) 올라간 존재(저장 가능)
+*한글로 쓴 파일은 깨져서 뜸
+
+git add test.html : test.html 파일을 스테이징 영역에 올림
+git add . : 프로젝트 내 모든 파일을 스테이징 영역에 올림
+
+
+== stage에 올라온 파일들을 버전으로 생성 ==
+git commit : 스테이징 영역에 있는 변경사항을 커밋하여 로컬 저장소에 기록하는데 사용
+= 하나의 버전으로 만든다
+
+git commit -m "first commit" : "fist commit"이라는 이름으로 버전 생성
+
+git 사용자 설정&환경 설정(컴퓨터 당 최초 1번만 하면 됨)
+git config --global user.name "Your Name"
+: git commit 에 사용할 사용자 이름 설정
+git config --global user.email "you@example.com"
+: git commit 에 사용할 사용자 이메일 주소 설정
+
+
+== 로컬과 github 통로 생성 ==
+git remote add origin https://github.com/otterWak/01_Webfront.git
+: 현재 로컬 디렉토리와 원격 레파지토리랑 연결 명령어
+https://github.com/otterWak/01_Webfront.git
+: 이 주소를 내 로컬과 연력 하겠다
+
+bash 창에서 : shift + insert -> 붙여넣기
+
+
+== 원격(github)에 push ==
+git push: 로컬 레파지토리에 있는 commit 내역을 원격 레파지토리로 올리는 것
+어디로 push할지 써야 됨
+
+
+== 앞으로 자주 사용할 것 ==
+
+git pull : 원격에서 로컬로 당기시오(내려받으시오)
+- 항상 집/학원 컴퓨터키면 바로 git pull
+- 코드 치고... 공부하고...
+git add .
+git commit -m ""
+git push : 로컬에서 원격으로 밀어 넣으시오(올리시오)
+git clone : 원격저장소 주소
+- 다른 로컬 pc에 원격저장소에 있는 프로젝트 클론 만들기
+
+code . : 파일 내 비쥬얼 스튜디오 실행

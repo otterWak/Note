@@ -1,0 +1,88 @@
+*{
+  box-sizing: border-box;
+  /* border: 1px solid orange; */
+}
+
+#menu-bar{
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  height: 40px;
+}
+
+#boty{
+  display: flex;
+}
+
+#main{
+  display: flex;
+  flex-direction: column;
+}
+
+#scroll-menu{
+  display: flex;
+  flex-direction: column;
+}
+
+#menu-bar>div:nth-child(1){
+  flex-basis: 20%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.fa-bars{
+  font-size: 25px;
+  height: 40px;
+  padding-top: 6px;
+}
+
+.menu-bar>a>span{
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+  text-decoration-line: none;
+}
+
+.fa-youtube{
+  font-size: 30px;
+  color: red;
+}
+
+
+#menu-bar>div:nth-child(2){
+  flex-basis: 60%;
+}
+
+#menu-bar>div:nth-child(3){
+  flex-basis: 20%;
+}
+
+#menu-bar>div:nth-child(2){
+  display: flex;
+  justify-content: center;
+}
+
+.menu-bar>input{
+  flex-basis: 60%;
+  border-radius: 30px 0% 0% 30px;
+  border: 0.5px solid gray;
+}
+
+#search{
+  border-radius: 0% 30px 30px 0%;
+  border: 0.5px solid gray;
+  margin-right: 20px;
+}
+
+.fa-magnifying-glass{
+  flex-basis: 20%;
+  background-color: rgb(212, 212, 212);
+  font-size: 20px;
+}
+
+#microphone{
+  font-size: 18px;
+  border-radius: 50%;
+  border: none;
+}

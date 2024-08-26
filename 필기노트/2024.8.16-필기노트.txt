@@ -1,0 +1,72 @@
+20240816
+
+====================
+※JavaScript※
+-프로그래밍 언어(논리적 산술 연산 가능)
+-Java랑 전혀 관련 없음
+
+컴파일: 우리가 짠 코드를 0과 1로 변환하는 과정
+고급 언어: 인간 친화적 언어(저급 언어: 기계 친화적 언어 ex: c)
+
+html 파일과 연결 : 
+<script src"#"><script> 작성
+1. <body> 태그의 끝부분에 위치
+2. <head> 태그 안에 위치한다
+html이 위에서 아래로 읽기 때문에, head 태그를 먼저 읽음
+
+※Javascript 코드 작성 방법※
+브라우저 개발자도구(F12) -> Console에 직접 작성
+HTML 내부에 script 태그를 이용해서 작성 (Internal 방식)
+HTML 외부에 존재하는 .js 파일을 연결해서 사용하는 방법(External 방식)
+태그에 직접 JS 코드를 작성 (inline 방식, 권장 X)
+
+※변수 (Variable)※
+* 메모리에 값을 계속 바꿔가면서 저장할 수 있는 공간
+* 변수에 이름을 붙이고 원하는 값을 대입하면
+  필요한 곳에서 변수명을 호출하여 변수에 저장된 값을 사용할 수 있다
+
+※Javascript 변수의 종류와 특징※
+1. var : 변수, 함수 스코프, 변수 호이스팅, 중복 선언 가능
+    (주로 과거 코드에서 사용되며, 최근에는 let 과 const가 선호됨)
+2. let : 변수, 블록 스코프, 변수 호이스팅(TDZ), 중복 선언 불가
+3. const : 상수, 블록 스코프, 변수 호이스팅(TDZ), 중복 선언 불가
+
+※호이스팅(Hoisting)※
+호이스팅은 Javascript에서 변수와 함수의 선언이
+해당 스코프의 최상단으로 끌어올려지는 동작을 말함
+* 호이스팅은 선언만 끌어올려지며,
+  초기화는 호이스팅되지 않음*
+  var, let/const 변수들은 각기 다른 방식으로 호이스팅됨
+
+
+※자바스크립트의 자료형※
+자바스크립트는 변수 선언 시 별도의 자료형을 지정하지 않음.
+-> 변수에 대입되는 값(리터럴)에 의해서 자료형이 결정됨.
+- string (문자열)
+- number (숫자) -> 정수/실수 모두 포함
+- boolean (논리값) -> true(참), false(거짓)
+- object (객체) -> 배열(Array), 자바스크립트 객체 {k:v , k:v ..}
+- function (함수)
+- undefined (정의되지 않은 변수) -> 변수가 선언만 됐고, 값이 대입되지 않음.
+
+==============================================
+※입력하기※
+
+console.log(1234) : 콘솔에 1234 출력
+console.log("문자열") : 콘솔에 문자열 출력
+console.log('문자열') : 콘솔에 문자열 출력
+
+변수의 선언
+var wakGood1 : 변수 wakGood1 선언
+let wakGood2 : 변수 wakGood2 선언
+const wakGood3 = 30; : 변수 wakGood3 선언 + 초기화 30
+==> const는 선언만 할 수 없음
+wakGood1 = 10; == 초기화 10
+wakGood2 = 20; == 초기화 20
+wakGood3 = 30; == 에러: 값 변경 불가
+
+*합 출력 / 이어 쓰기
+console.log(wakGood1 + wakGood2) : 30
+console.log(wakGood1, wakGood2) : 10, 20
+console.log("wakGood1 = " + wakGood1) : wakGood1 = 10
+console.log("wakGood2 = ", wakGood2) : wakGood2 = 20

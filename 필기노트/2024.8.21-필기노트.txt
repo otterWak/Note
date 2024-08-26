@@ -1,0 +1,142 @@
+20240821
+
+====================
+※JavaScript※
+
+==반복문==
+1. for 문
+- 끝이 정해져 있는 반복에 주로 사용
+- 작성 법
+  for(초기식; 조건식; 증감식){조건식이 true인 경우 반복 수행할 코드;}
+  예시 : for(let num = 1; num <= 5; num ++){console.log("통과");}
+- 초기식 : for문을 제어하는 용도의 변수 선언
+- 조건식 : for문의 반복 여부를 지정하는 식
+- 증감식 : 초기식에 사용된 값을 변환 시키는 식
+
+#예제(1) 1부터 30까지 2씩 증가하며 출력
+
+내가 쓴 코드)
+function check5(){
+  let result = ""
+  for(let num = 1; num <= 15; num++){
+    result += 1 + (num-1)*2;
+  }
+  console.log("num",result);
+}
+결과가 예상대로 나왔지만, 복잡하게 코드를 작성 함
+
+강사님 코드)
+function check5(){
+  for(let num = 1; num <= 30; num += 2){
+    console.log("num", num)
+  }
+}
+굳이 변수 선언을 별도로 안해도 됨
+그리고, ++만 쓸 수 있는 것이 아닌 +=, ++ 등 다양하게 사용 가능
+
+#예제(2) 구구단 만들기
+
+if(input , 2 || input > 9){
+  alert("2~9 사이만 입력하세요");
+  return;
+}
+
+for(let num = 1; num <= 9; num++){
+  ul.innerHTML += '<li>${input} x ${num} = ${input*num}</li>;
+}
+
+여기서 3가지 처음 안 것
+return : if 문 쓸 때 멈추려면 사용해야 되는 함수
+innerHTML : HTML 태그를 해석해서 화면에 출력가능
++= : 출력창에 쓰면 누적해서 출력
+
+#예제(3) 2중 포문을 이용해서 아래 모양 출력하기
+1
+12
+123
+1234
+12345
+
+y축(밖 for문), x축(안 for문) 활용해서 만드면 됨
+
+내가 쓴 코드)
+for(let y = 1; y <= 5; y++){
+  let str = "";
+  for(let x = 1; x <= y; x++){
+    str += x;
+  }
+  console.log(str);
+}
+
+2. while 문
+
+while(val !== null){
+  val = prompt("입력 후 확인");
+}
+
+#예제(4) 주문하기
+function check7(){
+  const gimbap = 3000;
+  const ramen = 3500;
+  const donkkaseu = 5000;
+
+  let gCount = 0;
+  let rCount = 0;
+  let dCount = 0;
+
+  let input;
+
+  while(input !== null){
+    input = prompt("메뉴 번호를 입력하세요!");
+    switch(input){
+      case"1": gCount++; break;
+      case"2": rCount++; break;
+      case"3": dCount++; break;
+      case"null": alert("주문 완료!"); break;
+      default : alert("메뉴에 작성된 번호만 선택해 주세요"); break;
+    }
+  }
+  alert(`김밥 : ${gCount}, 라면 : ${rCount}, 돈까스 : ${dCount}`);
+  let sum = (gCount*gimbap) + (rCount*ramen) + (dCount*donkkaseu);
+  alert(`총 가격 : ${sum} 원`);
+}
+느슨한 비교(==, !=), 엄격한 비교(===, !==)
+
+
+== 분기문 ==
+: 반복문 수행 중 반복을 멈추거나 넘어가는 구문
+
+- break : (가장 가까운/감싸고 있는)반복문을 멈춤
+- continue : (가장 가까운/감싸고 있는)반복문의 시작 부분으로 이동
+                -> 다음 반복으로 넘어감
+
+#예제(5) 0~9까지 5번 반복하여 출력(4의 배수 건너 뛰기, 3번째 줄 출력 후 멈추기)
+
+내가 쓴 코드)
+function check5(){
+  for(let y = 1; y<= 5; y++){
+    if(y > 3) break;
+
+    let z="0";
+      for(let x = 1; x<=9; x++){
+      if(x%4 == 0) continue;
+      z += x;
+      }
+    }
+    console.log(z);
+  }
+}
+
+강사님 코드)
+function check5(){
+  for(let y = 1; y<= 5; y++){
+    let z="";
+    for(let x = 0; x<= 9; x++){
+      // 0을 제외한 4의 배수인 경우
+      if(x !=0 && x%4 == 0) continue;
+      z += x;
+    }
+    console.log(z);
+    if(y == 3) break;
+  }
+}
