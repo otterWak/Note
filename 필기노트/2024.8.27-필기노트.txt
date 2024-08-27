@@ -1,0 +1,55 @@
+20240827
+
+====================
+※DOM※
+== Node란? ==
+
+
+== Node 탐색 방법 ==
+parentNode : 부모 노드 탐색
+firstChild : 첫 번쨰 자식 노드 탐색
+lastChild : 마지막 자식 노드 탐색
+childNodes[인덱스] : 원하는 위치에 존재하는 자식 노드 탐색
+previousSibling : 이전 형제 노드 탐색
+nextSibling : 다음 형제 노드 탐색
+
+== Node 추가(append) ==
+appendChild(노드) : 마지막 자식 노드 추가
+ex) appendChild(document.createTextNode("zzz));
+**문서에노드를 추가해준다는 명령어가 필요
+append("내용" 또는 노드 또는 요소 ) : 마지막 자식으로 추가
+prepend("내용" 또는 노드 또는 요소 ) : 첫번째 자식으로 추가
+before("내용" 또는 노드 또는 요소) : 이전에 추가
+after("내용" 또는 노드 또는 요소) : 다음으로 추가
+
+
+※요소 추가※
+
+요소.classList : 요소의 클래스 목록
+-> 클래스 존재여부, 추가, 제거 등을 할 수 있음
+-> 요소 목록이 배열 형식으로 반환
+요소.classList.add("클래스명") : 클래스 추가
+요소.classList.remove("클래스명") : 클래스 제거
+요소.classList.contains("클래스명") : 클래스 있으면 true/없으면 false
+
+
+※window 객체※
+setTimeout(function(){}, 3000);
+== 3초 후, function하라
+
+now.getHours/Minutes/Seconds : 시간/분/초 얻어오기
+
+interval(함수, 지연시간); : 인터발
+clearIntervaul() : 인터발 중지
+
+
+※정규표현식※
+
+== 정규표현식 객체 생성 ==
+1) const regExp = new RegExp("정규표현식");
+2) const regExp = /정규표현식/;
+
+== 정규표현식 확인 ==
+regExp.test(문자열) : 문자열에 정규표현식과 일피하는 패턴이 있을 경우true/없으면 false
+regExp.exerc(문자열) : 문자열에 정규표현식과 일치하는 패턴이 있을 경우 처음 매칭되는 문자열 반환
+--> 없으면 null 반환
