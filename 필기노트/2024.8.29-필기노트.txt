@@ -42,3 +42,15 @@ Scanner sc = new Scanner(System.in);
 2. 메소드클래스에 입력할 것
    public void 메소드명(){}
    ex) public void ex1(){}
+
+public void ex3() {
+  System.out.print("첫 번째 수 : ");
+  int num1 = sc.nextInt();
+		
+  System.out.print("두 번째 수 : ");
+  int num2 = sc.nextInt();
+		
+  String result3 = num1%num2 == 0 ? "배수입니다" : "배수가 아닙니다";
+		
+  System.out.println(result3);
+}
