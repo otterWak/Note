@@ -86,3 +86,5 @@ varStatus="변수명"
 - count : 현재 몇바퀴째인지 반복 횟수 반환 (1부터 시작)
 - first : 첫 번째 반복이면 true, 아니면 false
 - last : 마지막 반복이면 true, 아니면 false
+
+변경사항 넣어보기
