@@ -4,7 +4,7 @@
 [ JSP ]
 
 1. 정의
-- HSP(Java Server Page) : JAVA 코드가 들어가 있는 HTML 코드
+- JSP(Java Server Page) : JAVA 코드가 들어가 있는 HTML 코드
 - Java의 웹 서버 프로그램 스펙(서블릿)으로 변환되어 서비스 됨
 
 
@@ -18,7 +18,7 @@
 
 
 3. JSP를 이루는 구성인자(element)
-2-1) 지시어(diective)
+2-1) 지시어(directive)
 2-2) 스크립팅 원소 
 
 4. JSP 태그
