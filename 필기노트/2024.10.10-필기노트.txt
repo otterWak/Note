@@ -1,0 +1,89 @@
+20241010(목) DB - JOIN
+
+====================
+[ JOIN ]
+하나 이상의 테이블에서 데이터를 조회하기 위해 사용
+수행 결과는 하나의 Result Set으로 나옴
+
+
+0. 목록
+1) 내부 조인 (INNER JOIN)
+2) 외부 조인 (OUTER JOIN)
+3) 교차 조인 (CROSS JOIN)
+4) 비등가 조인 (NON EQUAL JOIN)
+5) 자체 조인 (SELF JOIN)
+6) 자연 조인 (NATURAL JOIN)
+7) 다중 조인
+
+
+1. 내부 조인 (INNER JOIN)
+- 연결되는 컬럼의 값이 일치하는 행들만 조인
+- 일치하는 값이 없는 행은 조인에서 제외됨
+1) 연결에 사용할 두 컬럼명이 다른 경우 : ON() 사용
+SELECT EMP_ID , EMP_NAME , DEPT_CODE , DEPT_TITLE
+FROM EMPLOYEE
+JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID);
+
+2) 연결에 사용할 두 컬럼명이 같은 경우 : USING() 사용
+SELECT EMP_NO , EMP_NAME , JOB_CODE , JOB_NAME
+FROM EMPLOYEE
+JOIN JOB USING(JOB_CODE);
+
+--> 컬럼의 값이 일치하지 않으면 결과에 포함 X!
+
+2. 외부 조인 (OUTER JOIN)
+- 두 테이블의 지정하는 컬럼값이 일치하지 않는 행도 조인에 포함
+SELECT EMP_ID , EMP_NAME , DEPT_CODE , DEPT_TITLE
+FROM EMPLOYEE
+LEFT JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID);
+
+
+3. 교차 조인 (CROSS JOIN)
+- 조인되는 테이블의 각 행들이 모두 매핑된 데이터가 검색
+SELECT EMP_NAME , DEPT_TITLE
+FROM EMPLOYEE
+CROSS JOIN DEPARTMENT;
+
+
+4. 비등가 조인 (NON EQUAL JOIN)
+- '='(등호)를 사용하지 않는 조인문
+- 지정한 컬럼값이 일치하는 경우가 아닌, 값의 범위에 포함되는 행들을 연결
+
+SELECT EMP_NAME , SALARY , SAL_GRADE.SAL_LEVEL
+FROM EMPLOYEE
+JOIN SAL_GRADE ON(SALARY BETWEEN MIN_SAL AND MAX_SAL);
+
+
+5. 자체 조인 (SELF JOIN)
+- 같은 테이블(자기 자신)과 조인
+- 테이블마다 별칭 작성
+
+SELECT E1.EMP_ID , E1.EMP_NAME,
+NVL(E1.MANAGER_ID) , NVL(E2.EMP_NAME)
+FROM EMPLOYEE E1
+LEFT JOIN EMPLOYEE E2 ON(E1.MANAGER_ID = E2.EMP_ID);
+
+
+6. 자연 조인 (NATURAL JOIN)
+- 동일한 타임과 이름을 가진 컬럼이 있는 테이블간의 조인을 간단히 표현
+
+SELECT EMP_NAME , JOB_NAME
+FROM EMPLOYEE
+NATURAL JOIN JOB;
+
+=
+
+SELECT EMP_NAME , JOB_NAME
+FROM EMPLOYEE
+JOIN JOB USING(JOB_CODE)
+
+
+7. 다중 조인
+- N개의 테이블을 조인할 때 사용(순서 중요)
+
+SELECT EMP_NAME , DEPT_TITLE , LOCAL_NAME
+FROM EMPLOYEE
+JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)
+JOIN LOCATION ON(LOCATION_ID = LOCAL_CODE);
+
+
