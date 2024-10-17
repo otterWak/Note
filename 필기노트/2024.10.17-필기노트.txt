@@ -1,0 +1,81 @@
+20241017(목) JDBC
+
+====================
+[ JDBC : Java DataBase Connectivity ]
+
+- Java에서 DB에 접근할 수 있게 해주는 Java Programming API
+
+1. OJDBC
+- 오라클에서 제공하는 오라클 DB와 자바가 연결하기 위한 라이브러리
+
+2. JDBC 사용 객체
+- DriverManager : Class.forName() 메소드를 통해 생성하고, Connection을 만드는 역할
+- Connection : 통로
+- Statement : Java에서 DB로부터 데이터를 얻고자 할 때 SQL을 실어서 보내는 역할
+- PreparedStatement : 인수에 대해 위치 홀더(Place Holder)를 사용하여 SQL을 실어서 보내는 역할
+
+3. JDBC 코딩 절차
+0) Import
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+1) JDBC 객체 참조용 변수 선언
+Connection conn = null;
+Statement stmt = null;
+ResultSet rs = null;
+2) DriverManager 객체를 이용해서 Connection 객체 생성
+2-1) Oracle JDBC Driver 객체 메모리 로드
+Class.forName("oracle.jdbc.driver.OracleDriver");
+
+2-2) DB 연결 정보 작성
+String type = "jdbc:oracle:thin:@";
+String host = "localhost";
+String port = ":1521";
+String dbName = ":XE";
+String userName = "username";
+String password = "password";
+
+2-3) DB 연결 정보와 DriverManager를 이용해서 Connection 객체 생성
+conn = DriverManager.getConnection(type + hos + port + dbName + userName + password);
+
+3) SQL 작성
+- JDBC 코드에서 SQL 작성 시, 세미콜론(;)을 작성하면 안됨
+- 줄 바꿔 작성 시, 띄어쓰기 주의
+String sql = "SELECT EMP_ID, EMP_NAME, SALARY, HIRE_DATE FROM EMPLOYEE";
+
+4) Statement 객체 생성
+stmt = conn.createStatement();
+
+5) Statement 객체를 이용해서 SQL 수행 후 결과 반환 받기
+- executeQuery() : SELECT 실행, ResultSet 반환
+- executeUpdate() : DML 실행, 결과 행의 개수 반환(int 형)
+ts = stmt.executeQuery(sql);
+
+6) 조회 결과가 담겨있는 ResultSet을 커서(Cursor)를 이용해 한 행 씩 접근하여 각행에 작성된 컬럼 값 얻어오기
+while(rs.next()){
+ String empId = rs.getString("EMP_ID");
+ String empName = rs.getString("EMP_NAME");
+ int salary = rs.getInt("SALARY");
+ Date hireDate = rs.getDate("HIRE_DATE");
+ System.out.printf(" 사번 : %s  / 이름 : %s / 급여 : %d / 입사일 : %s", empId, empName, salary, hireDate.toString() );
+}
+
+7) 사용 완료된 JDBC 객체 자원 반환(close)
+- 생성된 역순으로 close
+try{
+ if( rs != null ) rs.close();
+ if( stmt != null ) stmt.close();
+ if( conn != null ) conn.close();
+}catch(SQLException e){
+ e.printStachTrace();
+}
+
+
+
+
+$ git clone https://github.com/otterWak/04_JDBC.git
+--> 처음 컴퓨터로 가져올 때 사용

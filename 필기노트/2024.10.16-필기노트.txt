@@ -1,0 +1,108 @@
+20241016(수) DB - VIEW, SEQUENCE,INDX
+
+====================
+[ VIEW, SEQUENCE,INDX ]
+
+1. VIEW
+- 논리적 가상 테이블
+- SELECT 문의 실행 결과를 저장하는 객체
+
+1-1) 사용 목적
+- 복잡한 SELECT문을 쉽게 재사용하기 위해
+- 테이블의 진짜 모습을 감출 수 있어 보안상 유리
+
+1-2) 주의 사항
+- 가상의 테이블이기 때문에 ALTER 구문 사용 불가
+- VIEW를 이용한 DML이 가능한 경우도 있지만, 제약이 많이 따르기 때문에 조회용도로 대부분 사용
+- VIEW를 생성하기 위해서는 권한이 필요
+
+GRANT CREATE VIEW TO 사용자명;
+
+1-3) 작성법
+CREATE [OR REPLACE] [FORCE | NOFORCE] VIEW 뷰이름 [컬럼 별칭]
+AS 서브쿼리(SELECT문)
+[WITH CHECK OPTION]
+[WITH READ ONLY]
+
+1-4) 옵션
+- OR REPLACE : 기존에 동일한 이름의 VIEW가 존재하면 이를 변경. 없으면 새로 생성
+- FORCE : 서브쿼리에 사용된 데이블이 존재하지 않아도 뷰 생성
+- 컬럼 별칭 옵션 : 조회되는 VIEW의 컬럼명을 지정
+- WITH CHECK OPTION : 옵션을 지정한 컬럼의 값을 수정 불가능하게 함
+- WITH READ ONLY : 뷰에 대해 SELECT만 가능하도록 지정
+
+1-5) 예시
+
+CREATE OR REPLACE VIEW V_EMP
+AS
+SELECT
+EMP_ID 사번, 
+EMP_NAME 이름,
+NVL(DEPT_TITLE, '없음') 부서명,
+JOB_NAME 직급명
+FROM EMPLOYEE
+JOIN JOB USING(JOB_CODE)
+LEFT JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)
+ORDER BY 사번 ASC;
+
+2. SEQUENCE
+- 순차적으로 일정한 간격의 숫자를 발생시키는 객체
+
+2-1) 사용 목적
+- PRIMARY KEY 가 지정된 컬럼에 삽입될 값을 생성할 때 SEQUENCE를 이용하면 좋음
+
+2-2) 작성법
+CREATE SEQUENCE 시퀀스명
+[ START WITH 숫자 ]
+[ INCREMENT BY 숫자 ]
+[ MAXVALUE 숫자 | NO MAXVALUE ]
+[ MINVALUE 숫자 | NOMINVALUE ]
+[ CYCLE | NOCYCLE ]
+[ CACHE 바이트크기 | NOCACHE ]
+
+2-3) 사용 법
+- 시퀀스명.NEXTVAL : 다음 시퀀스 번호 얻어옴
+- 시퀀스명.CURRVAL : 현재 시퀀스 번호 얻어옴(NEXTVAL 1회 실행 후 사용 가능)
+
+2-4) 예시
+
+CREATE SEQUENCE SEQ_TEST_NO
+START WITH 100 
+INCREMENT BY 5 
+MAXVALUE 150   
+NOMINVALUE 
+NOCYCLE 
+NOCACHE; 
+
+3. INDEX
+- SQL 구문 중 SELECT 처리 속도 향상을 위해 컬럼에 대하여 생성하는 객체
+- 내부 구조는 B-STAR TREE 형식으로 되어 있음
+
+3-1) 장점
+- 자동 정렬 및 검색 속도 증가
+- 시스템의 부하가 낮아짐
+
+3-2) 단점
+- 데이터 변경(INSERT, UPDATE, DELETE) 작업 시 이진 트리 구조에 변형이 일어나 성능 저하
+- 별도 저장공간 필요(메모리 소비)
+- 인덱스 생성 시간 필요
+
+3-3) 작성법
+CREATE [UNIQUE] INDEX 인덱스명
+ON 테이블명 ( 컬럼명 [ 컬럼명 | 함수명 ]);
+
+3-4) 생성 예시
+
+CREATE TABLE TB_IDX_TEST(
+	TEST_NO NUMBER PRIMARY KEY,
+	TEST_ID VARCHAR2(20) NOT NULL 
+);
+
+BEGIN
+	FOR I IN 1..1000000 
+	LOOP
+		INSERT INTO TB_IDX_TEST 
+		VALUES(I, 'TEST'||I);
+	END LOOP;
+	COMMIT; 
+END;
