@@ -1,0 +1,88 @@
+20241017(목) PreparedStatement
+
+====================
+[ JDBC : PreparedStatement ]
+
+- Connection 객체의 preparedStatement() 메소드를 사용하여 객체 생성
+- SQL문장이 미리 멐파일 되고 실행 시간동안 인수 값을 위한 공간을 확보한다는 점에서 Satement와 다름
+- 각각의 인수에 대해 위치홀더(?)를 사용하여 SQL문장을 정의할 수 있게 함
+
+== PreparedStatement 이용 예제 ==
+
+문제 내용 :
+
+EMPLOYEE TABLE로 부터,
+아이디, 비밀번호, 이름을 입력받아
+TB_USER 테이블에 삽입(INSERT)하기
+
+
+1. JDBC 객체 참조 변수 선언
+
+Connection conn = null;
+PreparedStatement pstmt = null;
+
+- 조회하는 것이 아니기 때문에 ResultSet은 사용하지 않음
+
+
+2. DriverManager를 이용해서 Connection 객체 생성
+Class.forName("oracle.jdbc.driver.OracleDriver")
+
+String url = "jdbc:oracle:thin:@localhost:portNum:XE";
+String userName = "user01:
+String password = "pass01";
+
+conn = DriverManager.getConnection(url, userName, password);
+
+
+3. SQL 작성
+3-1) 변수 입력 받기
+Scanner sc = new Scanner(System.in);
+
+System.out.print("아이디 입력 : ");
+String id = sc.nextLine();
+
+System.out.print("비밀번호 입력 : ");
+String pw = sc.nextLine();
+
+System.out.print("이름 입력 : ");
+String name = sc.nextLine();
+
+3-2) SQL 작성하여 담기
+String sql = """
+		INSERT INTO TB_USER
+		VALUES(SEQ_USER_NO.NEXTVAL, ?, ?, ?, DEFAULT)
+		""";
+
+3-3) AutoCommit 끄기!
+- 개발자가 트랜잭션을 마음대로 제어하기 위해 끔
+conn.setAutoCommit(false);
+
+
+4. PreparedStatement 객체 생성
+- 객체 생성과 동시에 SQL이 담겨지게 됨(미리 place holder에 값을 받을 준비를 해야되기 때문)
+pstmt = conn.prepareStatement(sql);
+
+
+5. place holder에 알맞는 값 대입
+pstmt.setString(1, id);
+pstmt.setString(2, pw);
+pstmt.setString(3, name);
+
+
+6. SQL(INSERT) 수행 후 결과 반환 받기
+int result = pstmt.executeUpdate();
+
+
+7. result 값에 따른 결과 처리 + 드랜잭션 제어처리
+if(result > 0 ){
+	System.out.println(name + "님이 추가되었습니다");
+	con.commit();
+} else {
+	System.out.println("추가 실패");
+	conn.rollback();
+}
+
+
+8. 사용한 JDBC 객체 자원 반환
+if( pstmt != null ) pstmt.close();
+if( conn != null ) conn.close();
