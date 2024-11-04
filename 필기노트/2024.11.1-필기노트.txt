@@ -1,0 +1,52 @@
+[ 개발 분야 및 직무 관련 용어 ]
+
+※개념 공부를 잘 해야 됨
+
+나는 어느 분야로 가야할까?
+
+1. SI(Systeml Intergration)
+- 외부의 하청/프리랜서 : 생계형 개발자
+- 기업이 필요로 하는 정보시스템에 관한 기획부터 개발과 구축, 운영 등 모든 서비스를 제공함
+  (기간별 프로젝트 수행)
+- 요구사항 분석/분석,설계/개발/테스트/검수
+
+2. SM (System Maintenance)
+- 유지보수/관리하는 일
+- 오류수정/기능개선/기능추가/데이터 제공/시스템 안정화
+
+
+3. Solution
+- 자사 솔루션을 가지고 있는 업체 
+- 만들어져 있는 토대로 개발하고 업체에 공급
+- 소프트웨어 패키지나 응용프로그램과 연계된 문제들을 처리해주는 하드웨어나 소프트웨어
+- 요구사항 분석/커스터마이징/테스트/검수
+
+== 백엔드 개발자 ==
+Internet
+Basic Frontendend Knowledge // 웹&클라이언트 쪽 기초 알아야 됨
+
+OS and General Knowledge
+
+Learn a Language(Java, C#, JavaScript ...)
+
+Version Control System(형상관리) ex: Git
+
+RDBMS : MySQL, Oracle...
+
+More about Databases : Transactions, N+1 problem, ACID
+
+Learn about API : JSON, XML, OAuthm Token
+
+Testing : 기능/도메인/전체
+
+CI/CD: 개발 후 배포 전의 과정들을 통합적으로 만들어줌/자동으로 배포해 출시까지 해줌
+
+
+== 선배와의 대화 ==
+
+프로젝트 할 때, 기술 사용시 그 기술을 사용하는 이유를 잘 생각해야 됨
+
+면접 대비 질문은 외워야 됨
+구글에 "자바 스프링 면접 대비 질문"검색해서 정리.
+
+수업 이해도, 프로젝트 완성도에 focus를 둬야 됨

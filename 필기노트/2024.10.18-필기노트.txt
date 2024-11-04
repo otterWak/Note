@@ -86,3 +86,13 @@ if(result > 0 ){
 8. 사용한 JDBC 객체 자원 반환
 if( pstmt != null ) pstmt.close();
 if( conn != null ) conn.close();
+
+
+** 시험
+DDL : 테이블 생성시 제약조건
+
+** 나는 driver.xml 파일을 gitHub에 이미 올렸다
+-> 1) git rm --cached -r jdbc2/driver.xml
+-> 2) git add .
+-> 3) git commit -m "message"
+-> 4) git push

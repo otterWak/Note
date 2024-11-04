@@ -1,0 +1,61 @@
+20241028(월) 스프링부트
+
+
+[ Spring Framework ]
+
+1. Framework란
+- 애플리케이션 개발 시 필요한 기본 구조와 뼈대를 제공하는 틀
+- 제공되는 구조에 맞게 코딩을 진행하면 되기 때문에 개발 시간이 줄고, 효율적인 개발을 할 수 있음
+- 코드의 재사용성을 증가 시키기 위해 일련의 클래스 묶음이나 뼈대, 틀을 라이브러리 형태로 제공함
+
+2. Library란?
+- 자주 사용 되는 기능을 모아둔 코드의 집합
+- 개발자 또는 회사에서 개발한 기능(코드)를 라이브러리로 만들어서 배포
+→ 해당 기능이 필요한 개발자가 라이브러리를 자신의 코드에 추가해서 사용
+→ ex) lombok
+
+3. API(Application Peogramming Interface)란?
+- 서로 다른 소프트웨어 구성 요소 간의 상호 작용을 정의하는 규약
+- API를 통해 서로 다른 프로그램들이 데이터를 주고받거나 기능을 호출하여 통신할 수 있음
+
+4. Spring Framework란?
+- 자바 플랫폼을 위한 오픈 소스 애플리케이션 프레임워크로 간단하게 스프링(Spring)이라고도 불림
+- 동적인 웹 사이트를 개발하기 위한 여러 가지 서비스를 제공함
+- 대한민국 공공기관의 웹 서비스 개발 시 사용을 권장하고 있는
+- 전자정부 표준 프레임워크(Spring MVC Project 기반 프레임워크)의 기반 기술로서 사용
+
+5. Spring Framework의 주요 특징
+1) IOC(Inverson of Control, 제어 반전) : 객페의 생성부터 모든 생명주기의 관리까지 프레임워크가 주도함
+2) DI(Dependency Injection, 의존성 주입) : 개발자가 직접 객체를 생성하지 않고 Spring Container가 만들어둔 객체를 필요한 위치에서 주입함
+3) POJO(Plain Old Java Object) : 일반적인 자바 객체(POJO)를 사용할 수 있도록 지원
+4) AOP(Aspect Oriented Programming, 관점 지향 프로그래밍) : 코드 중복을 줄이고 유지보수성을 향상 시키는 기능을 지원함
+5) Spring MVC : MVC 디자인 태펀을 적용할 수 있는 어노테이션을 지원하고, IOC / DI를 이용해 의존 관계를 관리하여 개발자가 아닌 서버가 객체들을 관리하는 웹 애플리케이션을 구축 할 수 있음
+6) PSA(Portable Service Abstraction) : 별도의 추상화 레이어를 제공하여 득정 기술에 종속되지 않으면서 다양한 기술 스택을 쉽게 사용할 수 있음
+
+6. Spring Container 구성 모듈(기본 구성)
+1) Been : Spring 객체
+2) Core : 핵심 기능
+3) Context : Bean이 굴러가기 위한 환경 제공
+4) Expression Language : 객체간 통신 방법 제공
+
+뷰 리졸버 : 자동 설정이 되어 있음
+Controller : 받은 리턴 값 : 뷰 결정
+Controller 메서드 여러개 : 메서드 반환영 = 응답 페이지 경로(String)
+
+@GetMapping("main")
+public String main(){
+  // 메인 페이지를 응답하는 메서드
+  return "main";
+}
+- 접두사 : src/main/resources(classpath)/templates/
+- 접미사 : .html
+--> src/main/resources(classpath)/templates/main.html
+Controller 클래스 메서드 -> 반환형 String
+
+
+[ Spring IOC/DI ]
+
+1. DI 관련 어노테이션
+@Autowired
+- 정밀한 의존 관게 주입(DI)이 필요한 경우에 유용
+- 의존하는 객체를 주입할 때 주로 Type을 이용하게 된다
